@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="sv">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="icon" href="/favicon-donut.svg" type="image/svg+xml">
+  <title>SASS - SASSy Café</title>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Hoppa till innehåll</a>
+  <div class="container">
+    <header class="site-header">
+      <div class="brand">
+        <a href="index.html" class="brand-link">
+          <img class="brand-icon" src="/favicon-donut.svg" alt="" aria-hidden="true">
+          <h1 class="logo">SASSy Café</h1>
+        </a>
+      </div>
+      <nav class="nav">
+        <ul class="nav-ul">
+          <li>
+            <a href="index.html">Start</a>
+          </li>
+          <li>
+            <a href="#">Meny</a>
+          </li>
+          <li>
+            <a href="#">Boka bord</a>
+          </li>
+          <li>
+            <a href="#">Om oss</a>
+          </li>
+          <li>
+            <a href="animation.html">Animering</a>
+          </li>
+          <li>
+            <a href="sass.html">SASS</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main id="main" class="main">
+      <section class="sass-page">
+        <div class="hero">
+          <div class="hero-grid">
+          <img class="hero-grid-img" src="/images/header4.webp" alt="Färgglatt strössel i närbild">
+          <img class="hero-grid-img" src="/images/header1.webp" alt="Färgglatt strössel i närbild">
+          <img class="hero-grid-img" src="/images/header9.webp" alt="Färgglatt strössel i närbild">
+          </div>
+          <h2 class="hero-sass">Utvärdering – att jobba med SASS!</h2>
+        </div>
+        <h3>Introduktion</h3>
+        <p>
+          Att arbeta med SASS har varit både roligt och frustrerande – på ett bra sätt. I början kändes det nästan som
+          att jag skrev helt vanlig CSS, och jag förstod inte riktigt poängen. Men ju mer jag provade på,
+          desto tydligare blev det varför SASS är så kraftfullt - och kul!
+        </p>
+
+        <h3>Variabler och struktur</h3>
+        <p>
+          Variabler för färger kändes logiskt redan från början. Att kunna byta en färg på ett ställe och se
+          hela temat ändras var både praktiskt och riktigt tillfredsställande. När jag började arbeta med både ljust
+          och mörkt tema blev det ännu tydligare hur värdefullt det är att ha strukturerade färgvariabler.
+        </p>
+        <p>
+          Jag fick också bättre förståelse för hur man delar upp sin styling i flera filer och kopplar ihop dem med
+          @use. Även här tog det en stund innan jag förstod hur man behöver länka ihop filer för att allt ska fungera,
+          små fel kunde ge ganska kryptiska felmeddelanden. Det krävdes att jag verkligen förstod vad som
+          importerades var och hur variabler faktiskt når olika delar av koden.
+        </p>
+
+        <h3>Mixins och @extend</h3>
+        <p>
+          Det som verkligen fick poletten att trilla ner var arbetet med mixins och @extend. I början kändes det lite
+          abstrakt – speciellt eftersom det strulade lite för mig – varför inte bara skriva färgen direkt? Men när jag
+          började använda en mixin för att automatiskt välja textfärg baserat på bakgrund förstod jag idén: det handlar
+          inte om att välja en färg, utan om att skapa logik.
+        </p>
+        <p>
+          I början var det väldigt rörigt, särskilt när olika regler skrev över varandra och saker inte betedde sig
+          som jag trodde. Men när jag väl fick det att fungera kunde jag också se fördelarna.
+        </p>
+
+        <h3>Utmaningar och insikter</h3>
+        <p>
+          En av dom större utmaningarna var att förstå hur olika regler påverkar varandra, särskilt i kombination med
+          dark mode. Ibland fungerade saker inte som jag hade tänkt, då blev jag tvungen att stanna upp och verkligen
+          fundera över vad som faktiskt hände i koden.
+        </p>
+        <p>
+          Jag har märkt att det är lätt att göra saker mer komplicerade än vad dom behöver vara. Ibland är en
+          enkel lösning bättre än en (kanske smart) men komplicerad lösning. Det är nog en av de viktigaste insikterna
+          jag tar med mig.
+        </p>
+
+        <h3>Sammanfattning</h3>
+        <p>
+          Sammanfattningsvis har arbetet med SASS gjort det tydligare hur man kan strukturera större CSS-projekt, även
+          om det
+          stundvis varit frustrerande (när man inte riktigt greppat vad man håller på med än). Det har varit en
+          nyttig, och faktiskt riktigt kul process. Det bästa med den här uppgiften var att den verkligen gav utrymme
+          för kreativitet och att maxa stylingen, jag ser fram emot att lära mig ännu mer!
+        </p>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>&copy; 2026 Fredrika Stjernlöf</p>
+      <p>
+        Denna webbplats har skapats som en del i kursen Frontend-baserad
+        webbutveckling på Mittuniversitetet i Sundsvall.
+      </p>
+    </footer>
+  </div>
+  <script type="module" src="/src/js/main.js"></script>
+</body>
+
+</html>

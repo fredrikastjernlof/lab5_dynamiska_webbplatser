@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="icon" href="/favicon-donut.svg" type="image/svg+xml">
+    <title>SASSy Café - Animering</title>
+</head>
+
+<body class="page-animation">
+    <a class="skip-link" href="#main">Hoppa till innehåll</a>
+    <div class="container">
+        <header class="site-header animation-header">
+
+            <!-- Snurrande bakgrundslager -->
+            <div class="color-animation" aria-hidden="true"></div>
+
+            <!-- Innehåll som ska vara stilla -->
+            <div class="color-animation-container">
+                <div class="brand">
+                    <a href="index.html" class="brand-link">
+                        <img class="brand-icon" src="/favicon-donut.svg" alt="" aria-hidden="true">
+                        <h1 class="logo">SASSy Café</h1>
+                    </a>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-ul">
+                        <li>
+                            <a href="index.html">Start</a>
+                        </li>
+                        <li>
+                            <a href="#">Meny</a>
+                        </li>
+                        <li>
+                            <a href="#">Boka bord</a>
+                        </li>
+                        <li>
+                            <a href="#">Om oss</a>
+                        </li>
+                        <li>
+                            <a href="animation.html">Animering</a>
+                        </li>
+                        <li>
+                            <a href="sass.html">SASS</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main id="main" class="main">
+            <section class="animation-page">
+                <div class="hero">
+                    <div class="hero-grid">
+                        <img class="hero-grid-img" src="/images/header3.webp"
+                            alt="Bild av kaffekopp uppifrån stående bland kaffebönor.">
+                        <img class="hero-grid-img" src="/images/header5.webp"
+                            alt="Munkara i pastellfärger med strössel på.">
+                        <img class="hero-grid-img" src="/images/header9.webp"
+                            alt="En muffins med chokladtopping och hasselnötter.">
+                    </div>
+                    <div class="hero-animation">
+                        <h2>✨🍩Animering 🍩✨</h2>
+                        <p>Här testar jag keyframes, transitions och interaktiv animation med JavaScript.</p>
+                    </div>
+                </div>
+                <section class="candy-lab">
+                    <h3>🫧🍬Candy Lab🍬🫧</h3>
+                    <p>Tryck på knappen och se vad som händer 👀</p>
+                    <ul class="candy-status" id="candyStatus"></ul>
+                    <button type="button" class="btn-sugar" id="toggleSugar">
+                        Starta sockerrus!🍭
+                    </button>
+
+                    <div class="featured-wrapper">
+                        <div class="sprinkle-zone" aria-hidden="true">
+                            <span class="sprinkle"></span><span class="sprinkle"></span><span
+                                class="sprinkle"></span><span class="sprinkle"></span>
+                            <span class="sprinkle"></span><span class="sprinkle"></span><span
+                                class="sprinkle"></span><span class="sprinkle"></span>
+                            <span class="sprinkle"></span><span class="sprinkle"></span><span
+                                class="sprinkle"></span><span class="sprinkle"></span>
+                            <span class="sprinkle"></span><span class="sprinkle"></span><span
+                                class="sprinkle"></span><span class="sprinkle"></span>
+                            <span class="sprinkle"></span><span class="sprinkle"></span><span
+                                class="sprinkle"></span><span class="sprinkle"></span>
+
+                            <span class="sprinkle"></span><span class="sprinkle"></span><span
+                                class="sprinkle"></span><span class="sprinkle"></span>
+                            <span class="sprinkle"></span><span class="sprinkle"></span><span
+                                class="sprinkle"></span><span class="sprinkle"></span>
+                            <span class="sprinkle"></span><span class="sprinkle"></span><span
+                                class="sprinkle"></span><span class="sprinkle"></span>
+                            <span class="sprinkle"></span><span class="sprinkle"></span><span
+                                class="sprinkle"></span><span class="sprinkle"></span>
+                            <span class="sprinkle"></span><span class="sprinkle"></span><span
+                                class="sprinkle"></span><span class="sprinkle"></span>
+
+                            <span class="sprinkle"></span><span class="sprinkle"></span><span
+                                class="sprinkle"></span><span class="sprinkle"></span>
+                            <span class="sprinkle"></span><span class="sprinkle"></span><span
+                                class="sprinkle"></span><span class="sprinkle"></span>
+                            <span class="sprinkle"></span><span class="sprinkle"></span><span
+                                class="sprinkle"></span><span class="sprinkle"></span>
+                            <span class="sprinkle"></span><span class="sprinkle"></span><span
+                                class="sprinkle"></span><span class="sprinkle"></span>
+                            <span class="sprinkle"></span><span class="sprinkle"></span><span
+                                class="sprinkle"></span><span class="sprinkle"></span>
+
+                            <span class="sprinkle"></span><span class="sprinkle"></span><span
+                                class="sprinkle"></span><span class="sprinkle"></span>
+                            <span class="sprinkle"></span><span class="sprinkle"></span><span
+                                class="sprinkle"></span><span class="sprinkle"></span>
+                            <span class="sprinkle"></span><span class="sprinkle"></span><span
+                                class="sprinkle"></span><span class="sprinkle"></span>
+                            <span class="sprinkle"></span><span class="sprinkle"></span><span
+                                class="sprinkle"></span><span class="sprinkle"></span>
+                            <span class="sprinkle"></span><span class="sprinkle"></span><span
+                                class="sprinkle"></span><span class="sprinkle"></span>
+                        </div>
+
+                        <div class="featured-grid">
+                            <img class="featured-img" src="/images/bild9.webp"
+                                alt="Tårta toppad med rosa glasyr, grädde, färska körsbär och strössel.">
+                            <img class="featured-img" src="/images/bild7.webp"
+                                alt="Tre kaffemått med kaffebönor, malt kaffe och tillagat kaffe.">
+                            <img class="featured-img" src="/images/bild6.webp" alt="Makroner i pastelliga färger.">
+                            <img class="featured-img" src="/images/bild5.webp"
+                                alt="Kaka toppad med grädde, färska jordgubbar, blåbär och hallon.">
+                            <img class="featured-img" src="/images/bild8.webp"
+                                alt="Närbild av cupcake toppad med strössel.">
+                            <img class="featured-img" src="/images/bild1.webp"
+                                alt="Munkar i pastellfärger med strössel på.">
+                            <img class="featured-img" src="/images/bild2.webp"
+                                alt="Bild av kaffekopp uppifrån stående bland kaffebönor.">
+                            <img class="featured-img" src="/images/bild4.webp"
+                                alt="Tre munkar med glasyr och strössel.">
+                            <img class="featured-img" src="/images/bild3.webp"
+                                alt="En muffins med chokladtopping och hasselnötter.">
+
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <div class="bubble-layer" aria-hidden="true">
+                <img class="bubble b1" src="/images/bubbla.webp" alt="">
+                <img class="bubble b2" src="/images/bubbla.webp" alt="">
+                <img class="bubble b3" src="/images/bubbla.webp" alt="">
+                <img class="bubble b4" src="/images/bubbla.webp" alt="">
+                <img class="bubble b5" src="/images/bubbla.webp" alt="">
+                <img class="bubble b6" src="/images/bubbla.webp" alt="">
+                <img class="bubble b7" src="/images/bubbla.webp" alt="">
+
+            </div>
+        </main>
+        <footer class="site-footer">
+            <p> &copy; 2026 Fredrika Stjernlöf</p>
+            <p>
+                Denna webbplats har skapats som en del i kursen Frontend-baserad
+                webbutveckling på Mittuniversitetet i Sundsvall.
+            </p>
+        </footer>
+    </div>
+    <script type="module" src="/src/js/main.js"></script>
+</body>
+
+</html>

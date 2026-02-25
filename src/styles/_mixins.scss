@@ -1,0 +1,20 @@
+@use "sass:color";
+@use "variables" as var;
+
+/* Logotyp-stil med färg + skugga */
+@mixin sassy-logo($main, $shadow) {
+  font-family: var.$font-logo;
+  color: $main;
+  text-shadow:
+    2px 2px 0 $shadow,
+    4px 4px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Väljer en läsbar textfärg baserat på bakgrundens ljushet */
+@mixin readable-text($bg) {
+  @if color.channel($bg, "lightness", $space: hsl) > 55% {
+    color: var.$dark-purple;
+  } @else {
+    color: var.$dark-text;
+  }
+}

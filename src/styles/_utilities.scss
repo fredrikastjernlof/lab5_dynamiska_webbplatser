@@ -1,0 +1,65 @@
+@use "variables" as var;
+
+/* Grundinställning av "kort": gemensam padding + rundade hörn */
+%card {
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+/* Regnbågslinje före rubrik/sektion */
+%rainbow-divider-before {
+    position: relative;
+    padding-top: 2rem;
+    margin-top: 1rem;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+        width: 70%;
+        height: 4px;
+        border-radius: 999px;
+
+        background: linear-gradient(90deg,
+                var.$color-purple,
+                var.$dark-pink,
+                var.$color-mint);
+    }
+}
+
+/* Regnbågslinje före rubrik/sektion */
+%rainbow-divider-after {
+    position: relative;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0.5rem;
+        transform: translateX(-50%);
+        width: 70%;
+        height: 4px;
+        border-radius: 999px;
+
+        background: linear-gradient(90deg,
+                var.$color-purple,
+                var.$dark-pink,
+                var.$color-mint);
+    }
+}
+
+%rainbow-border {
+    border: 4px solid transparent;
+    border-radius: 20px;
+
+    background:
+        linear-gradient(var.$dark-purple-pink , var.$color-primary-darker) padding-box,
+        linear-gradient(90deg,
+            var.$color-purple,
+            var.$dark-pink,
+            var.$color-mint ) border-box;
+}

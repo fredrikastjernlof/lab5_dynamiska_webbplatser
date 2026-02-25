@@ -1,0 +1,85 @@
+@use "sass:color";
+@use "../variables" as var;
+@use "../mixins" as mix;
+
+/* ------------------------------------------------*/
+/* -------------------Dark-theme-------------------*/
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var.$dark-bg;
+    color: var.$dark-text;
+
+    --nav-hover: #{color.adjust(var.$dark-pink, $lightness: 10%)};
+
+    .container {
+      background-color: var.$dark-black;
+      border-radius: 1rem;
+    }
+
+    &.page-animation.mode-2 {
+
+      --bg-1: #{var.$dark-purple-pink};
+      --bg-2: #{var.$dark-purple};
+      --bg-3: #{var.$dark-secondary};
+      --bg-4: #{var.$dark-primary};
+      animation: body-bg 10s ease-in-out infinite;
+    }
+  }
+
+  .site-header {
+    margin-bottom: 1rem;
+    background: linear-gradient(-135deg,
+        var.$dark-purple-pink,
+        var.$dark-purple,
+        var.$dark-secondary,
+        var.$dark-primary,
+        var.$dark-purple-black );
+
+    a {
+      color: var.$dark-text;
+    }
+
+
+    &.animation-header.mode-1 {
+      .color-animation {
+        background: conic-gradient(from 0deg,
+            var.$dark-purple-pink,
+            var.$dark-purple,
+            var.$dark-secondary,
+            var.$dark-primary,
+            var.$color-primary-darker,
+            var.$dark-purple-black,
+            var.$dark-purple-pink,
+            var.$dark-purple,
+            var.$dark-secondary,
+            var.$dark-primary,
+            var.$color-primary-darker,
+            var.$dark-purple-black,
+            var.$dark-purple-pink );
+      }
+    }
+  }
+
+  .featured {
+    background-color: lighten(var.$dark-primary, 4%);
+  }
+
+  .main {
+    background-color: var.$dark-primary;
+    @include mix.readable-text(var.$dark-primary);
+  }
+
+  .animation-page {
+    background-color: var.$dark-primary;
+    @include mix.readable-text(var.$dark-primary);
+  }
+
+  .site-footer {
+    background: linear-gradient(135deg,
+        var.$dark-secondary,
+        var.$dark-primary );
+
+    @include mix.readable-text(var.$dark-primary);
+  }
+}

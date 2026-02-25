@@ -1,0 +1,427 @@
+@use "variables" as var;
+
+/* Animation på body */
+
+body.page-animation.mode-2 {
+
+    --bg-1: #{var.$color-secondary};
+    --bg-2: #{var.$color-primary};
+    --bg-3: #{var.$color-purple};
+    --bg-4: #{var.$color-accent-mint};
+    animation: body-bg 10s ease-in-out infinite;
+}
+
+/* Animation i headern */
+
+.page-animation {
+    .animation-header.mode-1 {
+        /* Headern blir en referens för barn inuti den som är position: absolute */
+        position: relative;
+        /* Klipper bort allt som hamnar utanför headern */
+        overflow: hidden;
+
+        .color-animation {
+            /* Tar elementet ur normal layout och låter mig placera det fritt */
+            position: absolute;
+            /* Ett negativt värde gör att elementet blir större än föräldern och sticker ut åt alla håll */
+            inset: -75%;
+            /* Lägger "bakgrunds-färgklumpen" bakom innehållet -> som får z-index 1 senare */
+            z-index: 0;
+            /* Konisk gradient med startvinkel 0deg */
+            background: conic-gradient(from 0deg,
+                    var.$color-secondary,
+                    var.$color-primary,
+                    var.$color-purple,
+                    var.$color-accent-mint,
+                    var.$color-secondary,
+                    var.$color-primary,
+                    var.$color-purple,
+                    var.$color-accent-mint,
+                    var.$color-secondary );
+
+            /* Suddar ut gradientens färger och skapar ett blurr av färger */
+            filter: blur(50px);
+            /* Talar om att rotationen ska ske runt mitten */
+            transform-origin: 50% 50%;
+            /* Talar om för webbläsaren att elementet kommer att genomgå en transformation, 
+            vilket kan göra animationen mjukare */
+            will-change: transform;
+            /* Animation med villkor - namn, tid för utförande, konstant hastighet och evig loop */
+            animation: spin-animation 10s linear infinite;
+        }
+
+        .color-animation-container {
+            /* För att ha kontroll över z-index och eventuella absoluta barn */
+            position: relative;
+            /* Ligger ÖVER .color-animation */
+            z-index: 1;
+            /* Fyller hela föräldern */
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .brand-icon {
+        animation: spin-animation 30s linear infinite;
+    }
+}
+
+
+/* Bubblor*/
+
+.bubble-layer {
+    /* Gör att lagret sitter fast i viewporten, det rör sig inte när man scrollar.*/
+    position: fixed;
+    /* Lagret ska täcka hela skärmen - alltså: top:, right:, bottom:, left: = 0 */
+    inset: 0;
+    /* Gör att jag kan klicka "genom" bubblorna - dom blockerar inte länkar eller knappar */
+    pointer-events: none;
+    z-index: 9999;
+    /* Opacity: 0; och visability: hidden; gör bubblorna osynliga från början */
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* När mode-2 aktiveras (knappläge 2) blir bubblorna synliga */
+.bubble-layer.mode-2 {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Gäller för ALLA bubblor */
+.bubble {
+    /* Gör att jag kan placera varje bubbla fritt inuti .bubble-layer */
+    position: absolute;
+    will-change: transform;
+    animation: floaty 30s linear infinite;
+}
+
+/* Inställningar för varje enskild bubbla */
+.b1 {
+    /* Storleken baseras på skärmens bredd */
+    width: 8%;
+    height: auto;
+    /* Blir aldrig större än 110px */
+    max-width: 110px;
+    /* Startar 15% från vänster */
+    left: 15%;
+    /* Startar långt ned på sidan */
+    top: 100%;
+    /* Rör sig lite snabbare än de andra bubblorna */
+    animation-duration: 16s;
+
+}
+
+.b2 {
+    width: 12%;
+    height: auto;
+    max-width: 160px;
+    left: 50%;
+    top: 100%;
+    animation-duration: 24s;
+}
+
+.b3 {
+    width: 10%;
+    height: auto;
+    max-width: 130px;
+    left: 75%;
+    top: 100%;
+    animation-duration: 22s;
+}
+
+.b4 {
+    width: 10%;
+    height: auto;
+    max-width: 130px;
+    left: 35%;
+    top: 100%;
+    animation-duration: 20s;
+}
+
+.b5 {
+    width: 6%;
+    height: auto;
+    max-width: 100px;
+    left: 65%;
+    top: 100%;
+    animation-duration: 18s;
+}
+
+.b6 {
+    width: 4%;
+    height: auto;
+    max-width: 80px;
+    left: 85%;
+    top: 100%;
+    animation-duration: 12s;
+}
+
+.b7 {
+    width: 4%;
+    height: auto;
+    max-width: 80px;
+    left: 23%;
+    top: 100%;
+    animation-duration: 14s;
+}
+
+/* Sprinkles */
+
+.featured-wrapper {
+    /* Wrappern blir en referens för barn inuti den som är position: absolute */
+    position: relative;
+    margin-top: 1rem;
+
+    .featured-grid {
+        position: relative;
+        /* Bilderna hamnar under .sprinkle-zone */
+        z-index: 1;
+    }
+
+    /* Innehåller en massa sprinkles */
+    .sprinkle-zone {
+        position: absolute;
+        /* Täcker hela .featured-wrapper */
+        inset: 0;
+        overflow: hidden;
+        /* Klick och hover går igenom till bilder vid behov */
+        pointer-events: none;
+        /* Ovanför bilder */
+        z-index: 2;
+    }
+
+    /* Inställningar för VARJE sprinkle */
+    .sprinkle {
+        /* Varje sprinkle kan placeras fritt */
+        position: absolute;
+        /* Startar lite ovanför synlig yta så det ser ut som att den "faller in" */
+        top: -12%;
+        /* X-position via CSS-variabel --x (fallback 50%) */
+        left: var(--x, 50%);
+        /* Bredd via --w (fallback 12px) */
+        width: var(--w, 12px);
+        /* Höjd via --h (fallback 4px) */
+        height: var(--h, 4px);
+        /* Rundade kanter */
+        border-radius: 999px;
+        /* Färg via --c (fallback rött) */
+        background: var(--c, #ff4d6d);
+        /* Är osynlig tills effekten aktiveras */
+        opacity: 0;
+        will-change: transform;
+    }
+
+    /* Startar när man aktiverar mode-3 */
+    .sprinkle-zone.mode-3 .sprinkle {
+        /* Nu bli dom synliga */
+        opacity: 0.95;
+        /* Lägger på animationen som loopar infinite */
+        animation: sprinkleMove var(--dur, 3s) linear infinite;
+        /* Startförskjutning så det inte synkar (fallback 0s) */
+        animation-delay: var(--delay, 0s);
+    }
+}
+
+
+/* Sprinkles får olika egenskaper i loopar.*/
+
+/* Var 12:e sprinkle hamnar på ungefär samma X igen. Det ger spridning över bredden */
+.sprinkle:nth-child(12n + 1) {
+    --x: 3%;
+}
+
+.sprinkle:nth-child(12n + 2) {
+    --x: 11%;
+}
+
+.sprinkle:nth-child(12n + 3) {
+    --x: 19%;
+}
+
+.sprinkle:nth-child(12n + 4) {
+    --x: 27%;
+}
+
+.sprinkle:nth-child(12n + 5) {
+    --x: 35%;
+}
+
+.sprinkle:nth-child(12n + 6) {
+    --x: 43%;
+}
+
+.sprinkle:nth-child(12n + 7) {
+    --x: 51%;
+}
+
+.sprinkle:nth-child(12n + 8) {
+    --x: 59%;
+}
+
+.sprinkle:nth-child(12n + 9) {
+    --x: 67%;
+}
+
+.sprinkle:nth-child(12n + 10) {
+    --x: 75%;
+}
+
+.sprinkle:nth-child(12n + 11) {
+    --x: 83%;
+}
+
+.sprinkle:nth-child(12n + 12) {
+    --x: 91%;
+}
+
+
+/* Var 6:e sprinkle återanvänder samma färg */
+.sprinkle:nth-child(6n + 1) {
+    --c: #ff4d6d;
+}
+
+.sprinkle:nth-child(6n + 2) {
+    --c: #ffd166;
+}
+
+.sprinkle:nth-child(6n + 3) {
+    --c: #06d6a0;
+}
+
+.sprinkle:nth-child(6n + 4) {
+    --c: #4cc9f0;
+}
+
+.sprinkle:nth-child(6n + 5) {
+    --c: #b5179e;
+}
+
+.sprinkle:nth-child(6n + 6) {
+    --c: #ff7b00;
+}
+
+
+/* 5 olika storlekar på sprinkle */
+.sprinkle:nth-child(5n + 1) {
+    --w: 14px;
+    --h: 5px;
+}
+
+.sprinkle:nth-child(5n + 2) {
+    --w: 10px;
+    --h: 4px;
+}
+
+.sprinkle:nth-child(5n + 3) {
+    --w: 8px;
+    --h: 4px;
+}
+
+.sprinkle:nth-child(5n + 4) {
+    --w: 12px;
+    --h: 4px;
+}
+
+.sprinkle:nth-child(5n + 5) {
+    --w: 16px;
+    --h: 5px;
+}
+
+
+/* 6 olika hastigheter - vissa faller snabbt och andra långsamt */
+.sprinkle:nth-child(6n + 1) {
+    --dur: 1.8s;
+}
+
+.sprinkle:nth-child(6n + 2) {
+    --dur: 2.3s;
+}
+
+.sprinkle:nth-child(6n + 3) {
+    --dur: 2.9s;
+}
+
+.sprinkle:nth-child(6n + 4) {
+    --dur: 3.6s;
+}
+
+.sprinkle:nth-child(6n + 5) {
+    --dur: 4.2s;
+}
+
+.sprinkle:nth-child(6n + 6) {
+    --dur: 5.0s;
+}
+
+
+/* 8 varianter av "fall i sidled" */
+.sprinkle:nth-child(8n + 1) {
+    --drift: 10px;
+}
+
+.sprinkle:nth-child(8n + 2) {
+    --drift: 22px;
+}
+
+.sprinkle:nth-child(8n + 3) {
+    --drift: 35px;
+}
+
+.sprinkle:nth-child(8n + 4) {
+    --drift: 48px;
+}
+
+.sprinkle:nth-child(8n + 5) {
+    --drift: 16px;
+}
+
+.sprinkle:nth-child(8n + 6) {
+    --drift: 28px;
+}
+
+.sprinkle:nth-child(8n + 7) {
+    --drift: 40px;
+}
+
+.sprinkle:nth-child(8n + 8) {
+    --drift: 55px;
+}
+
+
+/* Sprider ut start så att inte alla sprinkles faller ned på samma gång */
+.sprinkle:nth-child(9n + 1) {
+    --delay: 0s;
+}
+
+.sprinkle:nth-child(9n + 2) {
+    --delay: .15s;
+}
+
+.sprinkle:nth-child(9n + 3) {
+    --delay: .3s;
+}
+
+.sprinkle:nth-child(9n + 4) {
+    --delay: .45s;
+}
+
+.sprinkle:nth-child(9n + 5) {
+    --delay: .6s;
+}
+
+.sprinkle:nth-child(9n + 6) {
+    --delay: .75s;
+}
+
+.sprinkle:nth-child(9n + 7) {
+    --delay: .9s;
+}
+
+.sprinkle:nth-child(9n + 8) {
+    --delay: 1.05s;
+}
+
+.sprinkle:nth-child(9n + 9) {
+    --delay: 1.2s;
+}

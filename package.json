@@ -1,0 +1,17 @@
+{
+  "name": "lab3_sass",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "optimize-images": "node scripts/optimize-images.mjs",
+    "build": "npm run optimize-images && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "sass": "^1.97.3",
+    "sharp": "^0.34.5",
+    "vite": "^7.3.1"
+  }
+}

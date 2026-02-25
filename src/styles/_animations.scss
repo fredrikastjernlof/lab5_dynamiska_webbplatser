@@ -1,0 +1,76 @@
+@use "variables" as var;
+
+/* För att snurra färgerna i headern */
+@keyframes spin-animation {
+    from {
+        transform: rotate(0turn);
+    }
+
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+/* För såpbubblor som flyter runt på skärmen */
+@keyframes floaty {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+    }
+
+    50% {
+        /* TranslateY -> 400px uppåt, TranslateX -> Rör sig lite åt höger, scale(1.05) -> lite större*/
+        transform: translateY(-700px) translateX(40px) scale(1);
+    }
+
+    75% {
+        /* TranslateY -> 600px uppåt, TranslateX -> svänger lite åt vänster, scale(1) -> normal storlek */
+        transform: translateY(-1050px) translateX(-20px) scale(1.2);
+    }
+
+    100% {
+        /* TranslateY -> Totalt 1400px uppåt, TranslateX -> svänger lite åt höger, scale(1) -> normal storlek */
+        transform: translateY(-1400px) translateX(20px) scale(1);
+    }
+}
+
+/* För att byta bakgrundsfärg på body */
+@keyframes body-bg {
+    0% {
+        background-color: var(--bg-1);
+    }
+
+    25% {
+        background-color: var(--bg-2);
+    }
+
+    50% {
+        background-color: var(--bg-3);
+    }
+
+    75% {
+        background-color: var(--bg-4);
+    }
+
+    100% {
+        background-color: var(--bg-1);
+    }
+}
+
+
+/* Animation för att sprida sprinkles :) */
+@keyframes sprinkleMove {
+    0% {
+        /* Start lite ovanför (-30px), rakt ned, ingen rotation */
+        transform: translateY(-30px) translateX(0px) rotate(0deg);
+    }
+
+    50% {
+        /* Mitt i fallet -> 45vh, driver i sidled till --drift, ett varv rotation */
+        transform: translateY(45vh) translateX(var(--drift, 30px)) rotate(360deg);
+    }
+
+    100% {
+        /* Faller 120vh, driver åt andra hållet (negativ drift), två varv rotation */
+        transform: translateY(120vh) translateX(calc(var(--drift, 30px) * -1)) rotate(720deg);
+    }
+}
