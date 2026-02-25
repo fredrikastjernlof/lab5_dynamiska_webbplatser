@@ -14,8 +14,10 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 main: resolve(__dirname, "index.html"),
-                SASS: resolve(__dirname, "sass.html"),
-                Animation: resolve(__dirname, "animation.html")
+                Karta: resolve(__dirname, "map.html"),
+                Diagram: resolve(__dirname, "diagram.html"),
+                Animation: resolve(__dirname, "animation.html"),
+                SASS: resolve(__dirname, "sass.html")   
             },
         },
     },
