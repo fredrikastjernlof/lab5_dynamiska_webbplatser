@@ -71,33 +71,24 @@ export async function initCharts() {
     const programTotals = topPrograms.map((item) => toNumber(item.applicantsTotal));
 
 
-    //Testlog:
 
-    topCourses.forEach(course => {
-        console.log(`${course.name}: ${toNumber(course.applicantsTotal)} sökande`);
-    });
+    /*-------------STAPELDIAGRAM-------------*/
 
-    console.table(topCourses);
-
-    topPrograms.forEach(program => {
-        console.log(`${program.name}: ${toNumber(program.applicantsTotal)} sökande`);
-    });
-
-    console.table(topPrograms);
-
-
-
-    // Stapeldiagram med "dummydata"
-    const labelColors = ["#ff52ab", "#5be2a3", "#ec83bd", "#aa5584", "#20d380"];
+    const labelColors = ["#faaf00", "#00aede", "#02c789", "#c2006b", "#c21414", "#003bde"];
 
     const barOptions = {
+        title: {
+            text: "Topp 6 mest sökta kurser HT25",
+            style: {
+            fontSize: "1.5rem"
+            }
+        },
         series: [
             {
-                data: [21, 22, 10, 28, 16, 21, 13, 30],
+                data: courseTotals,
             },
         ],
         chart: {
-            height: 350,
             type: "bar",
         },
         colors: labelColors,
@@ -107,23 +98,28 @@ export async function initCharts() {
                 distributed: true,
             },
         },
-        dataLabels: { enabled: false },
+        dataLabels: {
+            enabled: true,
+            style: {
+                fontSize: "1rem"
+            }
+        },
         legend: { show: false },
         xaxis: {
-            categories: [
-                ["John", "Doe"],
-                ["Joe", "Smith"],
-                ["Jake", "Williams"],
-                "Amber",
-                ["Peter", "Brown"],
-                ["Mary", "Evans"],
-                ["David", "Wilson"],
-                ["Lily", "Roberts"],
-            ],
+            categories: courseNames.map(name => {
+                if (name.includes("beteendeterapi")) {
+                    return [
+                        "Introduktion till beteendeterapi och",
+                        "kognitiv beteendeterapi (KBT)"
+                    ];
+                }
+                return name;
+            }),
             labels: {
+                rotate: -20,
                 style: {
                     colors: labelColors,
-                    fontSize: "12px",
+                    fontSize: "0.75rem",
                 },
             },
         },
@@ -135,24 +131,32 @@ export async function initCharts() {
         barChart.render();
     }
 
-    //Cirkeldiagram med "dummydata"
+
+
+    /*-------------CIRKELDIAGRAM-------------*/
 
     const pieOptions = {
-        series: [44, 55, 13, 43, 22],
+        title: {
+            text: "Topp 5 mest sökta program HT25",
+            style: {
+            fontSize: "1.5rem"
+            }
+        },
+        series: programTotals,
         chart: {
-            width: 380,
             type: "pie",
         },
-        labels: ["Team A", "Team B", "Team C", "Team D", "Team E"],
-        responsive: [
-            {
-                breakpoint: 480,
-                options: {
-                    chart: { width: 200 },
-                    legend: { position: "bottom" },
-                },
+        labels: programNames,
+        colors: labelColors.slice(0, 5),
+        dataLabels: {
+            formatter: function (val, opts) {
+                return opts.w.config.series[opts.seriesIndex];
             },
-        ],
+            style: {
+                fontSize: "1rem",
+                fontWeight: "600"
+            },
+        },
     };
 
     const pieEl = document.querySelector("#chart2");
@@ -160,6 +164,5 @@ export async function initCharts() {
         const pieChart = new ApexCharts(pieEl, pieOptions);
         pieChart.render();
     }
-
 }
 
