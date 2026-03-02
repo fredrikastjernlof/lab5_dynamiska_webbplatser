@@ -1,6 +1,18 @@
 "use strict";
 
-// Funktion för att hämta lat/lon för plats
+/**
+ * En position med latitud och longitud.
+ * @typedef {Object} Position
+ * @property {number} lat Latitud.
+ * @property {number} lon Longitud.
+ */
+
+/**
+ * Hämtar lat/lon för en plats som användaren skriver in.
+ * Här används ett externt API (Open-Meteo Geocoding) som returnerar koordinater.
+ * @param {string} query Plats att söka efter till exempel en ort.
+ * @returns {Promise<{lat:number, lon:number, name:string}>} Ett objekt med koordinater och namn.
+ */
 async function geocodePlace(query) {
     const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
         query
@@ -21,13 +33,16 @@ async function geocodePlace(query) {
     const place = data.results[0];
 
     return {
-        lat: place.latitude,
-        lon: place.longitude,
+        lat: Number(place.latitude),
+        lon: Number(place.longitude),
         name: place.name,
     };
 }
 
-// Funktion för att hämta "min position"
+/**
+ * Hämtar användarens aktuella position via webbläsaren.
+ * @returns {Promise<Position>} Ett objekt med lat/lon.
+ */
 function getMyPosition() {
     return new Promise((resolve, reject) => {
         if (!("geolocation" in navigator)) {
@@ -49,9 +64,15 @@ function getMyPosition() {
     });
 }
 
-//Uppdatera kartan
-function updateMap(frame, lat, lon) {
-    const delta = 0.01;
+/**
+ * Uppdaterar kartan så att den visar rätt område och en markör.
+ * @param {HTMLIFrameElement} frame Iframe-elementet där kartan visas.
+ * @param {number} lat Latitud.
+ * @param {number} lon Longitud.
+ * @param {number} [delta=0.01] Hur mycket kartan ska zooma (mindre värde = mer inzoomat).
+ * @returns {void}
+ */
+function updateMap(frame, lat, lon, delta = 0.01) {
     const left = lon - delta;
     const right = lon + delta;
     const bottom = lat - delta;
@@ -60,10 +81,13 @@ function updateMap(frame, lat, lon) {
     frame.src = `https://www.openstreetmap.org/export/embed.html?bbox=${left},${bottom},${right},${top}&layer=mapnik&marker=${lat},${lon}`;
 }
 
-// Initierar kart-sidan och hämtar DOM-element
+/**
+ * Startar allt som hör till kart-sidan.
+ * Kopplar formuläret (sök) och knappen (min position) till rätt funktioner.
+ * @returns {void}
+ */
 export function initMap() {
     const page = document.querySelector("#map-page");
-
     if (!page) return;
 
     const form = document.querySelector("#map-form");
@@ -72,50 +96,46 @@ export function initMap() {
     const frame = document.querySelector("#map-frame");
     const myBtn = document.querySelector("#my-location");
 
+    // Om något saknas ska inte koden krascha
     if (!form || !input || !status || !frame) {
         console.error("Map: Saknar ett eller flera DOM-element.");
         return;
     }
 
-    //Lägger till eventlyssnare och status-text
+    // Sök plats
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
 
         const query = input.value.trim();
         if (!query) return;
 
-        // Rensa input 
         input.value = "";
-
         status.textContent = "Söker plats...";
 
         try {
             const result = await geocodePlace(query);
-
             updateMap(frame, result.lat, result.lon);
             status.textContent = `Visar: ${result.name}`;
-
         } catch (error) {
             console.error("Fel vid sökning:", error);
             status.textContent = "Kunde inte hitta platsen.";
         }
     });
 
-    //Eventlyssnare för "min position"
+    // Sök efter "min position" 
     if (myBtn) {
         myBtn.addEventListener("click", async () => {
             status.textContent = "Hämtar din position...";
-
-            // Rensa input 
             input.value = "";
 
             try {
                 const pos = await getMyPosition();
-
-                updateMap(frame, pos.lat, pos.lon);
-                status.textContent = `Din position: ${pos.lat.toFixed(5)}, ${pos.lon.toFixed(5)}`;
+                updateMap(frame, pos.lat, pos.lon, 0.005);
+                status.textContent = `Din position: ${pos.lat.toFixed(5)}, ${pos.lon.toFixed(
+                    5
+                )}`;
             } catch (error) {
-                console.error("Fel vid sökning:", error);
+                console.error("Fel vid geolocation:", error);
                 status.textContent = "Kunde inte hämta din position.";
             }
         });
