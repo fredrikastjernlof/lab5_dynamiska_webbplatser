@@ -61,6 +61,7 @@
     }
   }
 
+  
   .featured {
     background-color: lighten(var.$dark-primary, 4%);
   }
@@ -74,6 +75,7 @@
     background-color: var.$dark-primary;
     @include mix.readable-text(var.$dark-primary);
   }
+
 
   .site-footer {
     background: linear-gradient(135deg,

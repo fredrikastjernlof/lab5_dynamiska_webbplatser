@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <link rel="icon" href="/favicon-donut.svg" type="image/svg+xml">
-  <title>SASSy Café</title>
+  <title>Kartor - SASSy Café</title>
 </head>
 
 <body>
@@ -43,27 +43,34 @@
     </header>
     <main id="main" class="main">
       <section class="hero">
-        <h2>Välkommen till sidan Kartor!</h2>
-        <div class="hero-content">
+        <h2>Kartor</h2>
+        <p>
+          Välkommen till kartsidan! Här hämtar jag platsdata via fetch från ett externt API och visar vald plats
+          markerad på kartan.
+        </p>
+        <div class="map-hero">
           <img class="hero-img" src="/images/header_map.webp" alt="Kartnål placeras på en karta">
         </div>
         <section id="map-page">
 
-          <h3>Mina kartor</h3>
+          <h3>Visa plats på kartan</h3>
 
           <form id="map-form">
             <label for="place">Sök plats</label>
             <input id="place" name="place" type="text" placeholder="t.ex. Malmköping, Sverige" required />
-            <button type="submit">Sök</button>
-            <button type="button" id="my-location">Min position</button>
+            <div class="map-btn-row">
+              <button type="submit" class="maps-btn">Sök 🔍</button>
+              <button type="button" id="my-location" class="maps-btn">Min position 📍</button>
+            </div>
           </form>
 
           <p id="map-status" aria-live="polite"></p>
 
           <div class="map-wrap">
-            <iframe id="map-frame" title="Karta" width="100%" height="450" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            <iframe id="map-frame" title="Karta" width="100%" height="450" style="border:0;" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
               src="https://www.openstreetmap.org/export/embed.html?bbox=16.6688346862793%2C59.112538421825384%2C16.782131195068363%2C59.15379917017725&amp;layer=mapnik">
-            </iframe>   
+            </iframe>
           </div>
 
         </section>
