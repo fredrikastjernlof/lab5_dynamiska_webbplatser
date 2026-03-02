@@ -63,6 +63,7 @@ function updateMap(frame, lat, lon) {
 // Initierar kart-sidan och hämtar DOM-element
 export function initMap() {
     const page = document.querySelector("#map-page");
+
     if (!page) return;
 
     const form = document.querySelector("#map-form");
@@ -71,6 +72,11 @@ export function initMap() {
     const frame = document.querySelector("#map-frame");
     const myBtn = document.querySelector("#my-location");
 
+    if (!form || !input || !status || !frame) {
+        console.error("Map: Saknar ett eller flera DOM-element.");
+        return;
+    }
+
     //Lägger till eventlyssnare och status-text
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
@@ -78,12 +84,13 @@ export function initMap() {
         const query = input.value.trim();
         if (!query) return;
 
-        console.log("Du klickade på SÖK. Du sökte på:", query);
+        // Rensa input 
+        input.value = "";
+
         status.textContent = "Söker plats...";
 
         try {
             const result = await geocodePlace(query);
-            console.log("Sökresultat:", result);
 
             updateMap(frame, result.lat, result.lon);
             status.textContent = `Visar: ${result.name}`;
@@ -94,22 +101,23 @@ export function initMap() {
         }
     });
 
-//Eventlyssnare för "min position"
-    myBtn.addEventListener("click", async () => {
-        status.textContent = "Hämtar din position...";
+    //Eventlyssnare för "min position"
+    if (myBtn) {
+        myBtn.addEventListener("click", async () => {
+            status.textContent = "Hämtar din position...";
 
-        // Rensa input 
-        input.value = "";
+            // Rensa input 
+            input.value = "";
 
-        try {
-            const pos = await getMyPosition();
-            console.log("Min position:", pos);
+            try {
+                const pos = await getMyPosition();
 
-            updateMap(frame, pos.lat, pos.lon);
-            status.textContent = `Din position: ${pos.lat.toFixed(5)}, ${pos.lon.toFixed(5)}`;
-        } catch (error) {
-            console.error("Fel vi sökning:", error);
-            status.textContent = "Kunde inte hämta din position.";
-        }
-    });
+                updateMap(frame, pos.lat, pos.lon);
+                status.textContent = `Din position: ${pos.lat.toFixed(5)}, ${pos.lon.toFixed(5)}`;
+            } catch (error) {
+                console.error("Fel vid sökning:", error);
+                status.textContent = "Kunde inte hämta din position.";
+            }
+        });
+    }
 }
