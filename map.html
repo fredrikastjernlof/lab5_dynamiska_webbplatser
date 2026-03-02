@@ -48,8 +48,23 @@
           <img class="hero-img" src="/images/header_map.webp" alt="Kartnål placeras på en karta">
         </div>
         <section id="map-page">
+
           <h3>Mina kartor</h3>
 
+          <form id="map-form">
+            <label for="place">Sök plats</label>
+            <input id="place" name="place" type="text" placeholder="t.ex. Malmköping, Sverige" required />
+            <button type="submit">Sök</button>
+            <button type="button" id="my-location">Min position</button>
+          </form>
+
+          <p id="map-status" aria-live="polite"></p>
+
+          <div class="map-wrap">
+            <iframe id="map-frame" title="Karta" width="100%" height="450" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=16.6688346862793%2C59.112538421825384%2C16.782131195068363%2C59.15379917017725&amp;layer=mapnik">
+            </iframe>   
+          </div>
 
         </section>
     </main>
