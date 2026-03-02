@@ -27,6 +27,28 @@ async function geocodePlace(query) {
     };
 }
 
+// Funktion för att hämta "min position"
+function getMyPosition() {
+    return new Promise((resolve, reject) => {
+        if (!("geolocation" in navigator)) {
+            reject(new Error("Geolocation stöds inte i din webbläsare."));
+            return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+            (pos) => {
+                resolve({
+                    lat: pos.coords.latitude,
+                    lon: pos.coords.longitude,
+                });
+            },
+            (err) => {
+                reject(err);
+            }
+        );
+    });
+}
+
 //Uppdatera kartan
 function updateMap(frame, lat, lon) {
     const delta = 0.01;
@@ -69,6 +91,25 @@ export function initMap() {
         } catch (error) {
             console.error("Fel vid sökning:", error);
             status.textContent = "Kunde inte hitta platsen.";
+        }
+    });
+
+//Eventlyssnare för "min position"
+    myBtn.addEventListener("click", async () => {
+        status.textContent = "Hämtar din position...";
+
+        // Rensa input 
+        input.value = "";
+
+        try {
+            const pos = await getMyPosition();
+            console.log("Min position:", pos);
+
+            updateMap(frame, pos.lat, pos.lon);
+            status.textContent = `Din position: ${pos.lat.toFixed(5)}, ${pos.lon.toFixed(5)}`;
+        } catch (error) {
+            console.error("Fel vi sökning:", error);
+            status.textContent = "Kunde inte hämta din position.";
         }
     });
 }
