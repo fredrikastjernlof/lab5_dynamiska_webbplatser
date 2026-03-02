@@ -1,0 +1,15 @@
+@use "variables" as var;
+@use "utilities" as *;
+
+#chart-page {
+
+    h3 {
+        font-size: 2rem;
+    }
+
+    .chart{
+        @extend %rainbow-divider-before;
+        margin: 1rem auto;
+        padding: 2rem 0;
+    }
+}
