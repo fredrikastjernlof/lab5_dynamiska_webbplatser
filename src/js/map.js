@@ -27,6 +27,17 @@ async function geocodePlace(query) {
     };
 }
 
+//Uppdatera kartan
+function updateMap(frame, lat, lon) {
+    const delta = 0.01;
+    const left = lon - delta;
+    const right = lon + delta;
+    const bottom = lat - delta;
+    const top = lat + delta;
+
+    frame.src = `https://www.openstreetmap.org/export/embed.html?bbox=${left},${bottom},${right},${top}&layer=mapnik&marker=${lat},${lon}`;
+}
+
 // Initierar kart-sidan och hämtar DOM-element
 export function initMap() {
     const page = document.querySelector("#map-page");
@@ -52,7 +63,9 @@ export function initMap() {
             const result = await geocodePlace(query);
             console.log("Sökresultat:", result);
 
-            status.textContent = `Hittade: ${result.name} (${result.lat}, ${result.lon})`;
+            updateMap(frame, result.lat, result.lon);
+            status.textContent = `Visar: ${result.name}`;
+
         } catch (error) {
             console.error("Fel vid sökning:", error);
             status.textContent = "Kunde inte hitta platsen.";
