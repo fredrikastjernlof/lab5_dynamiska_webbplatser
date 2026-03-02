@@ -11,9 +11,15 @@ export function initMap() {
     const frame = document.querySelector("#map-frame");
     const myBtn = document.querySelector("#my-location");
 
-    console.log("Form:", form);
-    console.log("Input:", input);
-    console.log("Status:", status);
-    console.log("Iframe:", frame);
-    console.log("Min position-knapp:", myBtn);
+    //Lägger till eventlyssnare och status-text
+    form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const query = input.value.trim();
+
+    console.log("Du klickade på SÖK!");
+    console.log("Du sökte efter", query);
+
+    status.textContent = `Du sökte på: ${query}`;
+  });
 }
