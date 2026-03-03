@@ -1,6 +1,11 @@
 "use strict";
 
 /**
+ * @module chart
+ * @fileoverview Funktioner för diagramsidan: hämtar statistik och renderar stapel- och cirkeldiagram med ApexCharts.
+ */
+
+/**
  * Konverterar en sträng till ett nummer.
  * Tar bort eventuella mellanslag i början och slutet med hjälp av trim.
  *

@@ -1,6 +1,11 @@
 "use strict";
 
 /**
+ * @module map
+ * @fileoverview Funktioner för kartsidan: sök plats (geokodning) och visa markör på OpenStreetMap.
+ */
+
+/**
  * En position med latitud och longitud.
  * @typedef {Object} Position
  * @property {number} lat Latitud.

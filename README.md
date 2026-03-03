@@ -49,10 +49,22 @@ På sidan Karta kan användaren:
 
 Fetch-anrop sker till Open-Meteo Geocoding API och själva kartan är inbäddad via OpenStreeMaps.
 
-## Dokumentation 📄
-
 ## Publicering 💻
 
+Webbplatsen är publicerad via Netlify:
+
+https://lab5dynamiskawebbplatser.netlify.app/
+
+## Dokumentation 📄
+
+### Global översikt
+https://lab5dynamiskawebbplatser.netlify.app/docs/index.html
+
+### Karta
+https://lab5dynamiskawebbplatser.netlify.app/docs/map.js.html
+
+### Diagram
+https://lab5dynamiskawebbplatser.netlify.app/docs/chart.js.html
 
 ## Det här tar jag med mig från uppgiften ✅🙌
 Att jobba med diagrammen var faktiskt riktigt kul. Det är något speciellt med att hämta in data och sedan se den förvandlas till något visuellt direkt på sidan. Plötsligt känns det “på riktigt”. Jag gillar verkligen ApexCharts – det känns proffsigt utan att vara krångligt, och det var roligt att testa olika inställningar och se hur små ändringar kunde göra stor skillnad i hur allt uppfattas.
