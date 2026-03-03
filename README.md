@@ -1,60 +1,68 @@
-# Laboration 4 – Grafiska effekter med CSS 👩🏼‍💻🎨
+# Laboration 5 – Dynamiska webbplatser 🌍📊
 
-Detta repository innehåller vidareutvecklingen av webbplatsen SASSy Café, skapad som en del av momentet kring grafiska effekter med CSS i kursen Frontend-baserad webbutveckling.
+Detta repository innehåller vidareutvecklingen av webbplatsen SASSy Café, skapad som en del av momentet Dynamiska webbplatser i kursen Frontend-baserad webbutveckling.
 
-I denna laboration har fokus legat på animationer, interaktion och kreativt arbete med CSS och JavaScript.
+Uppgiften bygger vidare på tidigare laborationer och har nu utökats med:
+
+ - Datahämtning via FetchAPI
+ - Visualisering av statistik i diagram
+ - Kartfunktion med externt API
+ - Dokumentation med JSDoc
 
 ## Syfte 🏁
 Syftet med laborationen är att:
-- skapa animationer med hjälp av @keyframes, transition och transform
-- skapa dynamiska funktioner som reagerar på användarinteraktion
-- vidareutveckla en tidigare webbplats
-- arbeta strukturerat med SASS
-- fortsätta att använda befintlig utvecklingsmiljö (Vite)
-- fortsätta arbeta med Git, branch-struktur och publicering
+
+- Själv sätta mig in i nya tekniker
+- Använda FetchAPI med async/await
+- Visualisera data i olika typer av diagram
+- Använda externt API
+- Dokumentera JavaScript med JSDoc
+- Publicera webbplats automatiskt via GitHub
 
 ## Tekniker 🧩
 - Vite
 - HTML, 
 - SASS (SCSS)
 - JavaScript
+- Fetch API
+- ApexCharts
+- OpenStreetMap
+- JSDoc
 - Git & GitHub
 
-## Animationer & Funktionalitet ✨
+## Funktionalitet
 
-Webbplatsen innehåller flera olika animationer:
+### Diagram 📊
+På sidan Diagram hämtas ansökningsstatistik för höstterminen 2025 via FetchAPI från en extern JSON-källa.
 
-### Rörliga objekt 🫧
-- Animerade såpbubblor som flyter över skärmen (egenskapade i Photopea)
-- Dekorativa "sprinkles" som strösslas över en foto-grid
-- Roterande donut
+- Stapeldiagram visar de 6 mest sökta kurserna och antal sökande
+- Cirkeldiagram visar de 5 mest sökta programmen och antal sökande
+- Diagrammen är implementerade med ApexCharts
+- Diagrammen är responsiva och anpassade för dark/light-mode
 
-### CSS-animationer 🎨 
-- Färg- och bakgrundseffekter
-- Bild- och texteffekter
-- Rörelser skapade med @keyframes
-- Övergångar med transition
-- Transformationer med transform
+### Karta 🌍
+På sidan Karta kan användaren:
 
-### Interaktiv animation 🔘
-- En knapp som triggar olika animationslägen (mode 1, 2 och 3)
-- JavaScript styr klassändringar och dynamiska effekter
-- Visuell återkoppling via statuslista
+- Söka efter en plats via textfält
+- Hämta sin aktuella information
+- Se vald plats merkerad på kartan
+
+Fetch-anrop sker till Open-Meteo Geocoding API och själva kartan är inbäddad via OpenStreeMaps.
+
+## Dokumentation 📄
 
 ## Publicering 💻
-https://lab4-sassy-cafe-animation.onrender.com/index.html
+
 
 ## Det här tar jag med mig från uppgiften ✅🙌
+Att jobba med diagrammen var faktiskt riktigt kul. Det är något speciellt med att hämta in data och sedan se den förvandlas till något visuellt direkt på sidan. Plötsligt känns det “på riktigt”. Jag gillar verkligen ApexCharts – det känns proffsigt utan att vara krångligt, och det var roligt att testa olika inställningar och se hur små ändringar kunde göra stor skillnad i hur allt uppfattas.
 
-Vilken rolig uppgift! Jag har verkligen fått vara kreativ och experimentera. Den detalj jag är allra mest nöjd med är de animerade såpbubblorna – som jag själv har skapat i Photopea och integrerat i animationen.
+Kartdelen var också spännande, men lite mer utmanande. Jag fick verkligen känna på hur det är att jobba med externa API:er i praktiken – att saker inte alltid fungerar som man tänkt och att man ibland behöver justera sin lösning längs vägen. Det gjorde att jag fick felsöka, läsa på och tänka om, vilket i slutändan gav mig en bättre förståelse för hur allt hänger ihop.
 
-Arbetet har varit både utmanande och nästan lite beroendeframkallande – det är svårt att sluta när man hela tiden vill testa “bara en grej till”.
+Det jag framför allt tar med mig är:
 
-Jag blev också väldigt medveten om hur viktigt det är att arbeta med partials. Tyvärr insåg jag det i senaste laget - dvs när min base var helt full med saker som kanske inte riktigt hörde hemma där. Så det var först på slutet som jag började strukturera och "städa upp". 
-
-Jag tar med mig:
-
-- större förståelse för hur CSS-animationer fungerar
-- bättre kontroll över @keyframes, transform och transition
-- ökad trygghet i att kombinera CSS och JavaScript
-- nästa gång ska jag försöka skapa en bättre filstruktur från början - så man slipper "städa" så mycket i slutet. 
+- Att jag blivit tryggare med FetchAPI och async/await
+- Att jag förstår bättre hur externa API:er fungerar i verkligheten
+- Hur mycket det gör att faktiskt visualisera data istället för att bara visa siffror
+- Att JSDoc faktiskt gör koden tydligare - både för andra och för mig själv (även om jag var skeptisk i början)
+- Att problemlösning ofta handlar om att testa, tänka om och våga justera
