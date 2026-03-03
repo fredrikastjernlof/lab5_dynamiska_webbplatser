@@ -109,13 +109,13 @@ export function initMap() {
         const query = input.value.trim();
         if (!query) return;
 
-        input.value = "";
         status.textContent = "Söker plats...";
 
         try {
             const result = await geocodePlace(query);
             updateMap(frame, result.lat, result.lon);
             status.textContent = `Visar: ${result.name}`;
+            input.value = "";
         } catch (error) {
             console.error("Fel vid sökning:", error);
             status.textContent = "Kunde inte hitta platsen.";

@@ -176,7 +176,8 @@ export async function initCharts() {
                 rotate: -30,
                 style: {
                     colors: labelColors,
-                    fontSize: "0.9rem",
+                    fontWeight: 600,
+                    fontSize: "12px",
                 },
             },
         },
@@ -200,7 +201,7 @@ export async function initCharts() {
                         labels: {
                             rotate: -60,
                             style: {
-                                fontSize: "12px"
+                                fontSize: "10px"
                             }
                         }
                     },
