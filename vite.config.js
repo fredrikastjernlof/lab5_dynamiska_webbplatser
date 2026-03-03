@@ -9,7 +9,7 @@ export default defineConfig({
             },
         },
     },
-    
+
     build: {
         rollupOptions: {
             input: {
@@ -17,7 +17,7 @@ export default defineConfig({
                 Karta: resolve(__dirname, "map.html"),
                 Diagram: resolve(__dirname, "chart.html"),
                 Animation: resolve(__dirname, "animation.html"),
-                SASS: resolve(__dirname, "sass.html")   
+                SASS: resolve(__dirname, "sass.html")
             },
         },
     },
